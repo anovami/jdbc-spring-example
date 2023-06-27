@@ -1,5 +1,6 @@
 package ru.itgirl.jdbcspringexample.repository;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 import ru.itgirl.jdbcspringexample.model.Book;
 
 import javax.sql.DataSource;
@@ -16,10 +17,10 @@ public class BookRepositoryImpl implements BookRepository {
         this.dataSource = dataSource;
     }
     @Override
-    public Book findBook() {
+    public Book findBook(@PathVariable String id) {
         Book result = new Book();
 
-        String SQL_findBook = "select * from books where id = 1;";
+        String SQL_findBook = "select * from books where id = " + id + ";";
 
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();

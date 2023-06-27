@@ -5,7 +5,7 @@ import ru.itgirl.jdbcspringexample.model.Book;
 import java.util.List;
 
 public interface BookRepository {
-    Book findBook();
+    Book findBook(String id);
 
     List<Book> findAllBooks();
 }
